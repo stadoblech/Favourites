@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEditor.SceneManagement;
-
+using UnityEditor.Experimental;
 
 namespace FavouritesEd
 {
@@ -49,7 +49,7 @@ namespace FavouritesEd
 
 			// add categories
 			List<FavouritesTreeElement> categories = new List<FavouritesTreeElement>();
-			Texture2D icon = EditorGUIUtility.IconContent(FolderIconName()).image as Texture2D;
+			Texture2D icon = EditorGUIUtility.IconContent(Invoke_folderIconName).image as Texture2D;
 			foreach (FavouritesCategory c in asset.categories)
 			{
 				FavouritesTreeElement ele = new FavouritesTreeElement()
@@ -287,7 +287,8 @@ namespace FavouritesEd
 		}
 
 		private static System.Func<string> Invoke_folderIconName;
-
+		private static string Invoke_folderIconName = EditorResources.folderIconName;
+		/*
 		private static string FolderIconName()
 		{
 			if (Invoke_folderIconName == null)
@@ -299,7 +300,7 @@ namespace FavouritesEd
 			}
 			return Invoke_folderIconName();
 		}
-
+		*/
 		// ------------------------------------------------------------------------------------------------------------
 	}
 }
